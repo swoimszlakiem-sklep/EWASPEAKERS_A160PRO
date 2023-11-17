@@ -47,7 +47,7 @@
       }
     ],
     "imageResize": true,
-    "uniqCompNum": 54,
+    "uniqCompNum": 56,
     "versionPublish": "5.7.12",
     "screenshot": "screenshot.png",
     "mcSmartCart": {
@@ -1176,207 +1176,274 @@
           "_params": {}
         },
         {
-          "_name": "video1",
-          "_sourceTheme": "churchm5",
-          "_customHTML": "<section data-bs-version=\"5.1\" class=\"video1 churchm5\" group=\"Image & Video\" mbr-class=\"{'mbr-fullscreen': fullScreen, 'mbr-parallax-background': bg.parallax}\">\n\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"checkbox\" title=\"Full Screen\" name=\"fullScreen\">\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\" checked>\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"5\" condition=\"fullScreen == false\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"5\" condition=\"fullScreen == false\">\n        <input type=\"checkbox\" title=\"Reverse\" name=\"reverseContent\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\">\n        <input type=\"checkbox\" title=\"Text\" name=\"showText\" checked>\n        <input type=\"checkbox\" title=\"Border\" name=\"showBorder\" checked>\n        <input type=\"color\" title=\"Border Color\" value=\"#ffffff\" name=\"border\" condition=\"showBorder\" selected>\n        <input type=\"color\" title=\"Play Color\" value=\"#fdfcfa\" name=\"play\" selected>\n        <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"image\" title=\"Image\" value=\"@ADDONS_PATH@/churchm5/components/_images/background1.jpg\" parallax>\n            <input type=\"color\" title=\"Color\" value=\"#000000\" selected>\n        </fieldset>\n        <header condition=\"bg.type === 'video'\">Fallback Image</header>\n        <input type=\"image\" title=\"Fallback Image\" value=\"@ADDONS_PATH@/churchm5/components/_images/background1.jpg\" name=\"fallBackImage\" condition=\"bg.type === 'video'\">\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\" checked>\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#000000\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.4\" condition=\"overlay && bg.type !== 'color'\">\n    </mbr-parameters>\n\n    <div class=\"mbr-fallback-image disabled\" mbr-if=\"bg.type == 'video'\"></div>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type!== 'color'\" mbr-style=\"{'opacity': overlayOpacity, 'background-color': overlayColor}\">\n    </div>\n\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row\">\n            <div class=\"col-12 col-lg-8 card\">\n                <div class=\"row cards\" mbr-class=\"{'flex-row-reverse' : reverseContent}\">\n                    <div class=\"col-12 col-lg-6 text\">\n                        <div class=\"title-wrapper\">\n                            <h2 class=\"mbr-section-title mbr-fonts-style\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-2\" mbr-if=\"showTitle\">\n                                <b>Our Sacred Holidays</b>\n                            </h2>\n                            <p class=\"mbr-text mbr-fonts-style\" data-app-selector=\".mbr-text\" mbr-theme-style=\"display-7\" mbr-if=\"showText\">\n                                Krótki test dźwięku z głośnika EWA A106 PRO.</p>\n                        </div>\n                    </div>\n                    <div class=\"col-12 col-lg-6 video\">\n                        <div class=\"video-block\">\n                            <div mbr-video class=\"video-wrapper\">\n                                <iframe src=\"https://vimeo.com/875366055?loop=1\" width=\"800\" height=\"600\"></iframe>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"border-wrap\" mbr-if=\"showBorder\"></div>\n                </div>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_name": "video01",
+          "_sourceTheme": "glassm5",
           "_styles": {
-            "& when not (@fullScreen)": {
-              "padding-top": "(@paddingTop * 1rem)",
-              "padding-bottom": "(@paddingBottom * 1rem)"
-            },
+            "padding-top": "(@paddingTop * 1rem)",
+            "padding-bottom": "(@paddingBottom * 1rem)",
             "& when (@bg-type = 'color')": {
               "background-color": "@bg-value"
             },
             "& when (@bg-type = 'image')": {
               "background-image": "url(@bg-value)"
             },
-            ".mbr-fallback-image.disabled": {
-              "display": "none"
+            ".mbr-media": {
+              "position": "relative",
+              "img": {
+                "width": "100%",
+                "object-fit": "cover"
+              }
             },
-            ".mbr-fallback-image": {
-              "display": "block",
+            ".box": {
+              "min-height": "600px",
+              "display": "flex",
+              "justify-content": "center",
+              "align-items": "center",
+              "border-radius": "10px",
               "background-size": "cover",
-              "background-position": "center center",
+              "background-position": "center",
+              "@media (max-width: 767px)": {
+                "min-height": "300px"
+              }
+            },
+            ".icon-wrap": {
+              "position": "relative",
+              "margin": "auto",
+              "width": "100px",
+              "height": "100px",
+              "background": "@iconBG",
+              "border-radius": "50%",
+              "cursor": "pointer",
+              "display": "flex",
+              "justify-content": "center",
+              "align-items": "center",
+              "a": {
+                "height": "20px"
+              },
+              "&:before": {
+                "position": "absolute",
+                "content": "''",
+                "top": "50%",
+                "left": "50%",
+                "transform": "translate(-50%, -50%)",
+                "width": "100px",
+                "height": "100px",
+                "background": "@iconBG",
+                "opacity": "0.8",
+                "border-radius": "50%",
+                "animation-duration": "1s",
+                "animation-name": "icons",
+                "animation-iteration-count": "infinite",
+                "z-index": "1"
+              }
+            },
+            "@keyframes icons": {
+              "from": {
+                "width": "100px",
+                "height": "100px",
+                "opacity": "0.8"
+              },
+              "to": {
+                "width": "160px",
+                "height": "160px",
+                "opacity": "0"
+              }
+            },
+            ".mbr-media span": {
+              "font-size": "1.5rem",
+              "transition": "all 0.2s",
+              "z-index": "2",
+              "padding-left": "4px",
+              "position": "relative",
+              "color": "@iconColor"
+            },
+            ".modalWindow": {
+              "position": "fixed",
+              "z-index": "5000",
+              "left": "0",
+              "top": "0",
+              "background-color": "rgba(61, 61, 61, 0.65)",
               "width": "100%",
               "height": "100%",
-              "position": "absolute",
-              "top": "0",
-              "& when (@bg-type = 'video')": {
-                "background-image": "url(@fallBackImage)"
-              }
-            },
-            "& when (@fullWidth)": {
-              ".container-fluid": {
-                "padding": "0",
-                "@media (max-width: 992px)": {
-                  "padding": "0"
-                }
-              }
-            },
-            ".container": {
-              "@media (max-width: 992px)": {
-                "padding": "0"
-              }
-            },
-            ".row": {
-              "justify-content": "center",
-              "@media (max-width: 992px)": {
-                "margin": "0"
-              }
-            },
-            ".card": {
-              "border-radius": "0",
-              "padding": "0 32px",
-              "@media (max-width: 992px)": {
-                "padding": "0 16px"
+              ".modalWindow-container": {
+                "display": "table-cell",
+                "vertical-align": "middle"
               },
-              ".row.cards": {
-                "position": "relative",
-                "& when (@showBorder)": {
-                  "padding-bottom": "50px",
-                  "@media (max-width: 992px)": {
-                    "padding-bottom": "30px"
-                  }
-                },
-                ".border-wrap": {
-                  "position": "absolute",
-                  "width": "100%",
-                  "height": "2px",
-                  "background-color": "@border",
-                  "bottom": "0",
-                  "left": "0"
-                },
-                ".text": {
-                  "padding": "0 25px 0 0",
-                  "& when (@reverseContent)": {
-                    "padding-right": "0",
-                    "padding-left": "25px",
-                    "@media (max-width: 992px)": {
-                      "padding": "0"
-                    }
-                  },
-                  "@media (max-width: 992px)": {
-                    "padding": "0",
-                    "margin-bottom": "30px"
-                  },
-                  ".title-wrapper": {
-                    ".mbr-section-title": {
-                      "margin-bottom": "30px"
-                    },
-                    ".mbr-text": {
-                      "margin-bottom": "0"
-                    }
-                  }
-                },
-                ".video": {
-                  "padding": "0 0 0 25px",
-                  "& when (@reverseContent)": {
-                    "padding-left": "0",
-                    "padding-right": "25px",
-                    "@media (max-width: 992px)": {
-                      "padding": "0"
-                    }
-                  },
-                  "@media (max-width: 992px)": {
-                    "padding": "0"
-                  },
-                  ".video-block": {
-                    ".video-wrapper": {
-                      ".app-video-wrapper": {
-                        "img": {
-                          "height": "310px",
-                          "object-fit": "cover"
-                        },
-                        "&::before": {
-                          "color": "@play",
-                          "text-shadow": "none"
-                        }
-                      }
-                    }
-                  }
-                }
+              ".modalWindow-video": {
+                "height": "calc(80vw / 1.778)",
+                "width": "80vw",
+                "margin": "0 auto"
+              }
+            },
+            ".close": {
+              "position": "fixed",
+              "opacity": "0.5",
+              "font-size": "22px",
+              "font-weight": "300",
+              "width": "60px",
+              "height": "60px",
+              "border-radius": "50%",
+              "color": "#fff",
+              "top": "2.5rem",
+              "right": "2.5rem",
+              "border": "2px solid #fff",
+              "text-shadow": "none",
+              "z-index": "5",
+              "transition": "opacity 0.3s ease",
+              "align-items": "center",
+              "justify-content": "center",
+              "display": "flex",
+              "&:hover": {
+                "opacity": "1",
+                "background": "#000",
+                "color": "#fff"
               }
             },
             ".mbr-section-title": {
-              "color": "#263652"
-            },
-            ".mbr-text": {
-              "color": "#ffffff",
-              "text-align": "center"
+              "color": "#c0f22c"
             }
           },
-          "_cid": "tSYpF7W9Z9",
-          "_anchor": "video1-1h",
+          "_customHTML": "<section data-bs-version=\"5.1\" class=\"video1\" group=\"Video\" plugins=\"PlayerVimeo\">\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\" checked>\n        <header>Color</header>\n        <input title=\"Icon\" name=\"iconColor\" type=\"color\" value=\"#c0f22c\">\n        <input title=\"Icon BG\" name=\"iconBG\" type=\"color\" value=\"#191919\">\n        <header>Video</header>\n        <input type=\"text\" title=\"Link\" name=\"modalVideo\" value=\"https://vimeo.com/875366055?loop=1\">\n        <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\">\n            <input title=\"Image\" type=\"image\" value=\"@PROJECT_PATH@/assets/images/speakerswideo2-1893x1065.png\" selected>\n            <input title=\"Color\" type=\"color\" value=\"#dce8eb\">\n        </fieldset>\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\" checked>\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#000000\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.6\" condition=\"overlay && bg.type !== 'color'\">\n    </mbr-parameters>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type!== 'color'\" mbr-style=\"{'opacity': overlayOpacity, 'background-color': overlayColor}\">\n    </div>\n    <div class=\"align-center\" mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-lg-{{textWidth}}\">\n                <div class=\"box\">\n                    <div class=\"mbr-media show-modal align-center\" data-modal=\".modalWindow\">\n                        <div class=\"icon-wrap\">\n                            <a class href=\"https://vimeo.com/875366055?loop=1\" target=\"_blank\"><span mbr-icon class=\"mbr-iconfont mobi-mbri-play mobi-mbri\"></span></a>\n                        </div>\n                        <div class=\"mbr-section-head\" mbr-if=\"showTitle\">\n                            <h4 class=\"mbr-section-title mbr-fonts-style mt-5\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-2\" mbr-if=\"showTitle\"><b><a href=\"https://vimeo.com/875366055?loop=1\" class=\"text-secondary\" target=\"_blank\">TEST GŁOŚNIKA</a></b></h4>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div>\n        <div class=\"modalWindow\" style=\"display: none;\">\n            <div class=\"modalWindow-container\">\n                <div class=\"modalWindow-video-container\">\n                    <div class=\"modalWindow-video\">\n                        <iframe width=\"100%\" height=\"100%\" data-src=\"{{modalVideo}}\" frameborder=\"0\" allowfullscreen=\"1\"></iframe>\n                    </div>\n                    <a class=\"close\" role=\"button\" data-dismiss=\"modal\" data-bs-dismiss=\"modal\">\n                        <span aria-hidden=\"true\" class=\"mbr-iconfont mobi-mbri-close mobi-mbri closeModal\"></span>\n                        <span class=\"sr-only visually-hidden\">Close</span>\n                    </a>\n                </div>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_anchor": "video01-1j",
+          "_isUserblock": true,
+          "_cid": "tVPZ16n0Y6",
           "_protectedParams": [],
           "_global": false,
           "_once": false,
           "_params": {}
         },
         {
-          "alias": false,
+          "_name": "video01",
+          "_sourceTheme": "glassm5",
           "_styles": {
-            "background": "@bgColor",
-            ".video-block": {
-              "margin-left": "auto",
-              "margin-right": "auto",
-              "max-width": "1300px"
+            "padding-top": "(@paddingTop * 1rem)",
+            "padding-bottom": "(@paddingBottom * 1rem)",
+            "& when (@bg-type = 'color')": {
+              "background-color": "@bg-value"
             },
-            "@media (max-width: 767px)": {
-              "padding-top": "(@paddingTop * 2px)",
-              "padding-bottom": "(@paddingBottom * 2px)",
-              ".video-block": {
-                "width": "100% !important"
-              },
-              ".btn": {
-                "margin": "0.5rem 0.5rem"
-              },
-              ".mbr-section-subtitle": {
-                "width": "auto"
+            "& when (@bg-type = 'image')": {
+              "background-image": "url(@bg-value)"
+            },
+            ".mbr-media": {
+              "position": "relative",
+              "img": {
+                "width": "100%",
+                "object-fit": "cover"
               }
             },
-            "@media (min-width: 768px)": {
-              "padding-top": "(@paddingTop * 15px)",
-              "padding-bottom": "(@paddingBottom * 15px)",
-              ".container-fluid": {
-                "max-width": "1300px"
-              },
-              ".video-block": {
-                "padding": "0 1rem"
-              },
-              ".mbr-section-subtitle": {
-                "margin-bottom": "3.5rem",
-                "width": "30rem",
-                "margin-left": "auto",
-                "margin-right": "auto"
+            ".box": {
+              "min-height": "600px",
+              "display": "flex",
+              "justify-content": "center",
+              "align-items": "center",
+              "border-radius": "10px",
+              "background-size": "cover",
+              "background-position": "center",
+              "@media (max-width: 767px)": {
+                "min-height": "300px"
               }
             },
-            ".underline": {
-              "margin-top": "-0.5rem",
-              "margin-bottom": "1rem",
-              ".line": {
-                "width": "3rem",
-                "height": "2px",
-                "background": "@underlineColor",
-                "display": "inline-block"
+            ".icon-wrap": {
+              "position": "relative",
+              "margin": "auto",
+              "width": "100px",
+              "height": "100px",
+              "background": "@iconBG",
+              "border-radius": "50%",
+              "cursor": "pointer",
+              "display": "flex",
+              "justify-content": "center",
+              "align-items": "center",
+              "a": {
+                "height": "20px"
+              },
+              "&:before": {
+                "position": "absolute",
+                "content": "''",
+                "top": "50%",
+                "left": "50%",
+                "transform": "translate(-50%, -50%)",
+                "width": "100px",
+                "height": "100px",
+                "background": "@iconBG",
+                "opacity": "0.8",
+                "border-radius": "50%",
+                "animation-duration": "1s",
+                "animation-name": "icons",
+                "animation-iteration-count": "infinite",
+                "z-index": "1"
               }
             },
-            ".row": {
-              "margin-top": "1rem"
+            "@keyframes icons": {
+              "from": {
+                "width": "100px",
+                "height": "100px",
+                "opacity": "0.8"
+              },
+              "to": {
+                "width": "160px",
+                "height": "160px",
+                "opacity": "0"
+              }
             },
-            ".mbr-section-subtitle": {
-              "margin-bottom": "3.5rem",
-              "margin-left": "auto",
-              "margin-right": "auto"
+            ".mbr-media span": {
+              "font-size": "1.5rem",
+              "transition": "all 0.2s",
+              "z-index": "2",
+              "padding-left": "4px",
+              "position": "relative",
+              "color": "@iconColor"
             },
-            "h2": {
-              "margin-bottom": "1rem"
+            ".modalWindow": {
+              "position": "fixed",
+              "z-index": "5000",
+              "left": "0",
+              "top": "0",
+              "background-color": "rgba(61, 61, 61, 0.65)",
+              "width": "100%",
+              "height": "100%",
+              ".modalWindow-container": {
+                "display": "table-cell",
+                "vertical-align": "middle"
+              },
+              ".modalWindow-video": {
+                "height": "calc(80vw / 1.778)",
+                "width": "80vw",
+                "margin": "0 auto"
+              }
+            },
+            ".close": {
+              "position": "fixed",
+              "opacity": "0.5",
+              "font-size": "22px",
+              "font-weight": "300",
+              "width": "60px",
+              "height": "60px",
+              "border-radius": "50%",
+              "color": "#fff",
+              "top": "2.5rem",
+              "right": "2.5rem",
+              "border": "2px solid #fff",
+              "text-shadow": "none",
+              "z-index": "5",
+              "transition": "opacity 0.3s ease",
+              "align-items": "center",
+              "justify-content": "center",
+              "display": "flex",
+              "&:hover": {
+                "opacity": "1",
+                "background": "#000",
+                "color": "#fff"
+              }
+            },
+            ".mbr-section-title": {
+              "color": "#c0f22c"
             }
           },
-          "_name": "features1",
-          "_sourceTheme": "luxurym4",
-          "_customHTML": "<section data-bs-version=\"5.1\" class=\"features1 luxurym4_features1\" group=\"Features\">\n\n    <mbr-parameters>\n        <!-- Block parameters controls (Blue \"Gear\" panel) -->\n        <header>Size</header>\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"8\" value=\"4\" step=\"1\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"8\" value=\"4\" step=\"1\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\">\n        <input type=\"checkbox\" title=\"Underline\" name=\"showUnderline\" condition=\"showTitle\">\n        <input type=\"color\" title=\"Color\" name=\"underlineColor\" value=\"#444444\" condition=\"showUnderline && showTitle\">\n        <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubtitle\">\n        <header>Color</header>\n        <input type=\"color\" title=\"Background Color\" name=\"bgColor\" value=\"#000000\">\n        <!-- End block parameters -->\n    </mbr-parameters>\n\n    <div class=\"container-fluid\">\n        <h2 class=\"mbr-section-title mbr-fonts-style align-center\" mbr-theme-style=\"display-2\" mbr-if=\"showTitle\" data-app-selector=\".mbr-section-title,.underline\">\n            Jewelry Design\n        </h2>\n        <div class=\"underline align-center\" mbr-if=\"showUnderline && showTitle\">\n            <div class=\"line\"></div>\n        </div>\n        <h3 class=\"mbr-section-subtitle mbr-fonts-style align-center mbr-light\" mbr-theme-style=\"display-7\" mbr-if=\"showSubtitle\" data-app-selector=\".mbr-section-subtitle\">\n            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et\n            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris\n        </h3>\n        <figure class=\"mbr-figure align-center\">\n            <div class=\"video-block\" mbr-style>\n                <div mbr-video>\n                    <iframe src=\"https://vimeo.com/874633101?autoplay=1\"></iframe>\n                </div>\n            </div>\n        </figure>\n    </div>\n</section>",
-          "_cid": "tSNWOIqb0u",
-          "_anchor": "features1-1d",
+          "_customHTML": "<section data-bs-version=\"5.1\" class=\"video1\" group=\"Video\" plugins=\"PlayerVimeo\">\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"0\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\" checked>\n        <header>Color</header>\n        <input title=\"Icon\" name=\"iconColor\" type=\"color\" value=\"#c0f22c\">\n        <input title=\"Icon BG\" name=\"iconBG\" type=\"color\" value=\"#191919\">\n        <header>Video</header>\n        <input type=\"text\" title=\"Link\" name=\"modalVideo\" value=\"https://vimeo.com/874633101?autoplay=1\">\n        <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\">\n            <input title=\"Image\" type=\"image\" value=\"@PROJECT_PATH@/assets/images/speakerswideo1-1911x1019.png\" selected>\n            <input title=\"Color\" type=\"color\" value=\"#dce8eb\">\n        </fieldset>\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\" checked>\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#000000\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.6\" condition=\"overlay && bg.type !== 'color'\">\n    </mbr-parameters>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type!== 'color'\" mbr-style=\"{'opacity': overlayOpacity, 'background-color': overlayColor}\">\n    </div>\n    <div class=\"align-center\" mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n\n        <div class=\"row justify-content-center\">\n            <div class=\"col-12 col-lg-{{textWidth}}\">\n                <div class=\"box\">\n                    <div class=\"mbr-media show-modal align-center\" data-modal=\".modalWindow\">\n                        <div class=\"icon-wrap\">\n                            <a href=\"https://vimeo.com/874633101?autoplay=1\"><span mbr-icon class=\"mbr-iconfont mobi-mbri-play mobi-mbri\"></span></a>\n                        </div>\n                        <div class=\"mbr-section-head\" mbr-if=\"showTitle\">\n                            <h4 class=\"mbr-section-title mbr-fonts-style mt-5\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-2\" mbr-if=\"showTitle\"><b><a href=\"https://vimeo.com/874633101?autoplay=1\" class=\"text-secondary\">START</a></b></h4>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div>\n        <div class=\"modalWindow\" style=\"display: none;\">\n            <div class=\"modalWindow-container\">\n                <div class=\"modalWindow-video-container\">\n                    <div class=\"modalWindow-video\">\n                        <iframe width=\"100%\" height=\"100%\" data-src=\"{{modalVideo}}\" frameborder=\"0\" allowfullscreen=\"1\"></iframe>\n                    </div>\n                    <a class=\"close\" role=\"button\" data-dismiss=\"modal\" data-bs-dismiss=\"modal\">\n                        <span aria-hidden=\"true\" class=\"mbr-iconfont mobi-mbri-close mobi-mbri closeModal\"></span>\n                        <span class=\"sr-only visually-hidden\">Close</span>\n                    </a>\n                </div>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_anchor": "video01-1i",
+          "_isUserblock": true,
+          "_cid": "tVPXiXv9Jk",
           "_protectedParams": [],
           "_global": false,
           "_once": false,

@@ -1663,6 +1663,108 @@ button:focus {
   position: absolute;
   top: 0;
 }
+.cid-tSYpF7W9Z9 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: #000000;
+}
+.cid-tSYpF7W9Z9 .mbr-fallback-image.disabled {
+  display: none;
+}
+.cid-tSYpF7W9Z9 .mbr-fallback-image {
+  display: block;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+.cid-tSYpF7W9Z9 .container-fluid {
+  padding: 0;
+}
+@media (max-width: 992px) {
+  .cid-tSYpF7W9Z9 .container-fluid {
+    padding: 0;
+  }
+}
+@media (max-width: 992px) {
+  .cid-tSYpF7W9Z9 .container {
+    padding: 0;
+  }
+}
+.cid-tSYpF7W9Z9 .row {
+  justify-content: center;
+}
+@media (max-width: 992px) {
+  .cid-tSYpF7W9Z9 .row {
+    margin: 0;
+  }
+}
+.cid-tSYpF7W9Z9 .card {
+  border-radius: 0;
+  padding: 0 32px;
+}
+@media (max-width: 992px) {
+  .cid-tSYpF7W9Z9 .card {
+    padding: 0 16px;
+  }
+}
+.cid-tSYpF7W9Z9 .card .row.cards {
+  position: relative;
+  padding-bottom: 50px;
+}
+@media (max-width: 992px) {
+  .cid-tSYpF7W9Z9 .card .row.cards {
+    padding-bottom: 30px;
+  }
+}
+.cid-tSYpF7W9Z9 .card .row.cards .border-wrap {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  bottom: 0;
+  left: 0;
+}
+.cid-tSYpF7W9Z9 .card .row.cards .text {
+  padding: 0 25px 0 0;
+}
+@media (max-width: 992px) {
+  .cid-tSYpF7W9Z9 .card .row.cards .text {
+    padding: 0;
+    margin-bottom: 30px;
+  }
+}
+.cid-tSYpF7W9Z9 .card .row.cards .text .title-wrapper .mbr-section-title {
+  margin-bottom: 30px;
+}
+.cid-tSYpF7W9Z9 .card .row.cards .text .title-wrapper .mbr-text {
+  margin-bottom: 0;
+}
+.cid-tSYpF7W9Z9 .card .row.cards .video {
+  padding: 0 0 0 25px;
+}
+@media (max-width: 992px) {
+  .cid-tSYpF7W9Z9 .card .row.cards .video {
+    padding: 0;
+  }
+}
+.cid-tSYpF7W9Z9 .card .row.cards .video .video-block .video-wrapper .app-video-wrapper img {
+  height: 310px;
+  object-fit: cover;
+}
+.cid-tSYpF7W9Z9 .card .row.cards .video .video-block .video-wrapper .app-video-wrapper::before {
+  color: #fdfcfa;
+  text-shadow: none;
+}
+.cid-tSYpF7W9Z9 .mbr-section-title {
+  color: #263652;
+}
+.cid-tSYpF7W9Z9 .mbr-text {
+  color: #ffffff;
+  text-align: center;
+}
 .cid-tSNWOIqb0u {
   background: #000000;
 }
